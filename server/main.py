@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, validator
 from joblib import load
 import uvicorn
@@ -91,6 +92,16 @@ class CompareResponse(BaseModel):
 # =====================================================
 app = FastAPI(title="F1 Strategy Prediction API", version=MODEL_VERSION)
 
+# --- CORS: bypass everything (allow all) ---
+# Note: allow_credentials=False so that Access-Control-Allow-Origin: * is valid per browsers.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      # allow all origins
+    allow_credentials=False,  # must be False to use wildcard origin
+    allow_methods=["*"],      # allow all methods (GET, POST, OPTIONS, etc.)
+    allow_headers=["*"],      # allow all headers
+)
+
 # =====================================================
 # Load artifacts + metadata at startup
 # =====================================================
@@ -154,10 +165,12 @@ def _startup():
         raise RuntimeError(f"Top-3 classifier artifact not found: {TOP3_CLS_PATH}")
     ART.regressor = load(REGRESSOR_PATH)
     ART.top3_clf = load(TOP3_CLS_PATH)
+
     circuit_laps_json = _load_json(CIRCUIT_LAPS_PATH) or []
     overtake_json = _load_json(OVERTAKE_INDEX_PATH) or []
     ART.circuit_laps = circuit_laps_json
     ART.overtake_difficulty = _build_overtake_difficulty_map(overtake_json)
+
     global CIRCUIT_META, NAME_TO_ID
     CIRCUIT_META, NAME_TO_ID = _build_circuit_maps(circuit_laps_json)
 
@@ -181,36 +194,62 @@ def _scenario_to_features(circuit_id: int | str, grid: int, pit_plan: List[PitSt
             cid = int(key.split("_")[0]) if key.split("_")[0].isdigit() else hash(key)
     cmeta = CIRCUIT_META.get(cid, {"name": f"circuit_{cid}", "country": "Unknown", "avgLaps": None})
     country = cmeta["country"]
+
     pit_count = len(pit_plan)
     durations = [p.durationMs for p in pit_plan] if pit_plan else []
     laps = [p.lap for p in pit_plan] if pit_plan else []
+
     total_ms = int(np.sum(durations)) if durations else 0
     avg_ms = int(np.mean(durations)) if durations else 0
     first_lap = int(min(laps)) if laps else 0
     last_lap = int(max(laps)) if laps else 0
+
     od_map = ART.overtake_difficulty or {}
     od_values = list(od_map.values()) or [0.5]
     od_default = float(np.mean(od_values))
     circuit_overtake_difficulty = float(od_map.get(cid, od_default))
-    row = pd.DataFrame([{ "grid": grid, "pit_count": pit_count, "pit_total_duration": total_ms, "pit_avg_duration": avg_ms, "first_pit_lap": first_lap, "last_pit_lap": last_lap, "circuit_overtake_difficulty": circuit_overtake_difficulty, "round": NUMERIC_DEFAULTS["round"], "circuitId": cid, "country": country }])
+
+    row = pd.DataFrame([{
+        "grid": grid,
+        "pit_count": pit_count,
+        "pit_total_duration": total_ms,
+        "pit_avg_duration": avg_ms,
+        "first_pit_lap": first_lap,
+        "last_pit_lap": last_lap,
+        "circuit_overtake_difficulty": circuit_overtake_difficulty,
+        "round": NUMERIC_DEFAULTS["round"],
+        "circuitId": cid,
+        "country": country
+    }])
     return row
 
 def _predict_finish_and_top3(circuit_id, grid, pit_plan: List[PitStop]):
     X_row = _scenario_to_features(circuit_id, grid, pit_plan)
+
     try:
         finish_pred = float(ART.regressor.predict(X_row)[0])
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Regression prediction failed: {e}")
+
     try:
         prob = ART.top3_clf.predict_proba(X_row)[0, 1]
         top3_prob = float(prob)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Top-3 probability failed: {e}")
+
     p50 = max(1.0, min(20.0, finish_pred))
     interval_width = 4.0
-    p10 = max(1.0, p50 - interval_width/2)
-    p90 = min(20.0, p50 + interval_width/2)
-    return {"prediction": {"finishP50": p50, "finishP10": float(p10), "finishP90": float(p90)}, "top3": {"probability": top3_prob}}
+    p10 = max(1.0, p50 - interval_width / 2)
+    p90 = min(20.0, p50 + interval_width / 2)
+
+    return {
+        "prediction": {
+            "finishP50": p50,
+            "finishP10": float(p10),
+            "finishP90": float(p90)
+        },
+        "top3": {"probability": top3_prob}
+    }
 
 def _robustness_score(p50: float, interval_width: float, top3_prob: float) -> float:
     iw_score = max(0.0, 1.0 - (interval_width / 10.0))
@@ -233,13 +272,25 @@ def metadata():
             cid = int(cid_raw)
         except Exception:
             cid = int(str(cid_raw).split("_")[0]) if str(cid_raw).split("_")[0].isdigit() else hash(cid_raw)
-        circuits.append({"circuitId": cid, "name": row.get("name_circuit") or row.get("name") or f"circuit_{cid}", "country": row.get("country", "Unknown"), "avgLaps": row.get("avgLaps"), "overtakeDifficulty": float(od_map.get(cid, 0.5))})
+        circuits.append({
+            "circuitId": cid,
+            "name": row.get("name_circuit") or row.get("name") or f"circuit_{cid}",
+            "country": row.get("country", "Unknown"),
+            "avgLaps": row.get("avgLaps"),
+            "overtakeDifficulty": float(od_map.get(cid, 0.5))
+        })
     return {"circuits": circuits, "modelVersion": MODEL_VERSION}
 
 @app.post("/predict", response_model=PredictResponse)
 def predict(req: PredictRequest):
     out = _predict_finish_and_top3(req.circuitId, req.gridPosition, req.pitPlan)
-    return {"prediction": out["prediction"], "top3": out["top3"], "perPitEffects": None, "explanation": None, "modelVersion": MODEL_VERSION}
+    return {
+        "prediction": out["prediction"],
+        "top3": out["top3"],
+        "perPitEffects": None,
+        "explanation": None,
+        "modelVersion": MODEL_VERSION
+    }
 
 @app.post("/compare", response_model=CompareResponse)
 def compare(req: CompareRequest):
@@ -252,9 +303,19 @@ def compare(req: CompareRequest):
         interval_width = float(p90 - p10)
         top3_prob = out["top3"]["probability"]
         robust = _robustness_score(p50, interval_width, top3_prob)
-        results.append(CompareResult(scenarioId=sc.id, finishP50=float(p50), intervalWidth=float(interval_width), top3Probability=float(top3_prob), robustnessScore=float(robust)))
+        results.append(CompareResult(
+            scenarioId=sc.id,
+            finishP50=float(p50),
+            intervalWidth=float(interval_width),
+            top3Probability=float(top3_prob),
+            robustnessScore=float(robust),
+        ))
     best = max(results, key=lambda r: r.robustnessScore) if results else None
-    return CompareResponse(results=results, recommendedScenarioId=best.scenarioId if best else "", modelVersion=MODEL_VERSION)
+    return CompareResponse(
+        results=results,
+        recommendedScenarioId=best.scenarioId if best else "",
+        modelVersion=MODEL_VERSION
+    )
 
 # --- Uvicorn Runner ---
 if __name__ == "__main__":
