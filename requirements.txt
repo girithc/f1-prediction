@@ -1,0 +1,18 @@
+# --- Core runtime ---
+fastapi
+uvicorn[standard]
+
+# --- Data & ML stack ---
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+shap
+
+# --- Utilities ---
+python-dotenv
+pathlib
+
+# --- Optional: for faster JSON serialization ---
+orjson

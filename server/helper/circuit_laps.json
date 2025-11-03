@@ -1,0 +1,452 @@
+[
+  {
+    "circuitId":19,
+    "name_circuit":"Indianapolis Motor Speedway",
+    "country":"USA",
+    "avgLaps":138.0
+  },
+  {
+    "circuitId":57,
+    "name_circuit":"Zeltweg",
+    "country":"Austria",
+    "avgLaps":105.0
+  },
+  {
+    "circuitId":52,
+    "name_circuit":"Circuit Mont-Tremblant",
+    "country":"Canada",
+    "avgLaps":90.0
+  },
+  {
+    "circuitId":50,
+    "name_circuit":"Nivelles-Baulers",
+    "country":"Belgium",
+    "avgLaps":85.0
+  },
+  {
+    "circuitId":56,
+    "name_circuit":"Prince George Circuit",
+    "country":"South Africa",
+    "avgLaps":84.0
+  },
+  {
+    "circuitId":28,
+    "name_circuit":"Okayama International Circuit",
+    "country":"Japan",
+    "avgLaps":83.0
+  },
+  {
+    "circuitId":48,
+    "name_circuit":"Mosport International Raceway",
+    "country":"Canada",
+    "avgLaps":83.0
+  },
+  {
+    "circuitId":45,
+    "name_circuit":"Jarama",
+    "country":"Spain",
+    "avgLaps":82.0
+  },
+  {
+    "circuitId":58,
+    "name_circuit":"Aintree",
+    "country":"UK",
+    "avgLaps":81.0
+  },
+  {
+    "circuitId":29,
+    "name_circuit":"Adelaide Street Circuit",
+    "country":"Australia",
+    "avgLaps":80.0
+  },
+  {
+    "circuitId":41,
+    "name_circuit":"Dijon-Prenois",
+    "country":"France",
+    "avgLaps":80.0
+  },
+  {
+    "circuitId":54,
+    "name_circuit":"Le Mans",
+    "country":"France",
+    "avgLaps":80.0
+  },
+  {
+    "circuitId":43,
+    "name_circuit":"Long Beach",
+    "country":"USA",
+    "avgLaps":79.0
+  },
+  {
+    "circuitId":30,
+    "name_circuit":"Kyalami",
+    "country":"South Africa",
+    "avgLaps":78.0
+  },
+  {
+    "circuitId":6,
+    "name_circuit":"Circuit de Monaco",
+    "country":"Monaco",
+    "avgLaps":78.0
+  },
+  {
+    "circuitId":38,
+    "name_circuit":"Brands Hatch",
+    "country":"UK",
+    "avgLaps":77.0
+  },
+  {
+    "circuitId":31,
+    "name_circuit":"Donington Park",
+    "country":"UK",
+    "avgLaps":76.0
+  },
+  {
+    "circuitId":33,
+    "name_circuit":"Phoenix street circuit",
+    "country":"USA",
+    "avgLaps":76.0
+  },
+  {
+    "circuitId":47,
+    "name_circuit":"Scandinavian Raceway",
+    "country":"Sweden",
+    "avgLaps":76.0
+  },
+  {
+    "circuitId":25,
+    "name_circuit":"Aut\u00f3dromo Juan y Oscar G\u00e1lvez",
+    "country":"Argentina",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":49,
+    "name_circuit":"Montju\u00efc",
+    "country":"Spain",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":44,
+    "name_circuit":"Las Vegas Street Circuit",
+    "country":"USA",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":60,
+    "name_circuit":"Riverside International Raceway",
+    "country":"USA",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":67,
+    "name_circuit":"Circuit de Pedralbes",
+    "country":"Spain",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":39,
+    "name_circuit":"Circuit Park Zandvoort",
+    "country":"Netherlands",
+    "avgLaps":75.0
+  },
+  {
+    "circuitId":11,
+    "name_circuit":"Hungaroring",
+    "country":"Hungary",
+    "avgLaps":73.0
+  },
+  {
+    "circuitId":26,
+    "name_circuit":"Circuito de Jerez",
+    "country":"Spain",
+    "avgLaps":71.0
+  },
+  {
+    "circuitId":18,
+    "name_circuit":"Aut\u00f3dromo Jos\u00e9 Carlos Pace",
+    "country":"Brazil",
+    "avgLaps":71.0
+  },
+  {
+    "circuitId":8,
+    "name_circuit":"Circuit de Nevers Magny-Cours",
+    "country":"France",
+    "avgLaps":71.0
+  },
+  {
+    "circuitId":40,
+    "name_circuit":"Zolder",
+    "country":"Belgium",
+    "avgLaps":70.0
+  },
+  {
+    "circuitId":27,
+    "name_circuit":"Aut\u00f3dromo do Estoril",
+    "country":"Portugal",
+    "avgLaps":70.0
+  },
+  {
+    "circuitId":16,
+    "name_circuit":"Fuji Speedway",
+    "country":"Japan",
+    "avgLaps":70.0
+  },
+  {
+    "circuitId":7,
+    "name_circuit":"Circuit Gilles Villeneuve",
+    "country":"Canada",
+    "avgLaps":70.0
+  },
+  {
+    "circuitId":32,
+    "name_circuit":"Aut\u00f3dromo Hermanos Rodr\u00edguez",
+    "country":"Mexico",
+    "avgLaps":68.0
+  },
+  {
+    "circuitId":42,
+    "name_circuit":"Fair Park",
+    "country":"USA",
+    "avgLaps":67.0
+  },
+  {
+    "circuitId":75,
+    "name_circuit":"Aut\u00f3dromo Internacional do Algarve",
+    "country":"Portugal",
+    "avgLaps":66.0
+  },
+  {
+    "circuitId":4,
+    "name_circuit":"Circuit de Barcelona-Catalunya",
+    "country":"Spain",
+    "avgLaps":66.0
+  },
+  {
+    "circuitId":70,
+    "name_circuit":"Red Bull Ring",
+    "country":"Austria",
+    "avgLaps":64.0
+  },
+  {
+    "circuitId":37,
+    "name_circuit":"Detroit Street Circuit",
+    "country":"USA",
+    "avgLaps":62.0
+  },
+  {
+    "circuitId":62,
+    "name_circuit":"Monsanto Park Circuit",
+    "country":"Portugal",
+    "avgLaps":62.0
+  },
+  {
+    "circuitId":36,
+    "name_circuit":"Aut\u00f3dromo Internacional Nelson Piquet",
+    "country":"Brazil",
+    "avgLaps":62.0
+  },
+  {
+    "circuitId":66,
+    "name_circuit":"Circuit Bremgarten",
+    "country":"Switzerland",
+    "avgLaps":62.0
+  },
+  {
+    "circuitId":9,
+    "name_circuit":"Silverstone Circuit",
+    "country":"UK",
+    "avgLaps":62.0
+  },
+  {
+    "circuitId":21,
+    "name_circuit":"Autodromo Enzo e Dino Ferrari",
+    "country":"Italy",
+    "avgLaps":61.0
+  },
+  {
+    "circuitId":15,
+    "name_circuit":"Marina Bay Street Circuit",
+    "country":"Singapore",
+    "avgLaps":61.0
+  },
+  {
+    "circuitId":68,
+    "name_circuit":"Buddh International Circuit",
+    "country":"India",
+    "avgLaps":60.0
+  },
+  {
+    "circuitId":61,
+    "name_circuit":"AVUS",
+    "country":"Germany",
+    "avgLaps":60.0
+  },
+  {
+    "circuitId":76,
+    "name_circuit":"Autodromo Internazionale del Mugello",
+    "country":"Italy",
+    "avgLaps":59.0
+  },
+  {
+    "circuitId":53,
+    "name_circuit":"Rouen-Les-Essarts",
+    "country":"France",
+    "avgLaps":58.0
+  },
+  {
+    "circuitId":1,
+    "name_circuit":"Albert Park Grand Prix Circuit",
+    "country":"Australia",
+    "avgLaps":58.0
+  },
+  {
+    "circuitId":5,
+    "name_circuit":"Istanbul Park",
+    "country":"Turkey",
+    "avgLaps":58.0
+  },
+  {
+    "circuitId":79,
+    "name_circuit":"Miami International Autodrome",
+    "country":"USA",
+    "avgLaps":57.0
+  },
+  {
+    "circuitId":12,
+    "name_circuit":"Valencia Street Circuit",
+    "country":"Spain",
+    "avgLaps":57.0
+  },
+  {
+    "circuitId":3,
+    "name_circuit":"Bahrain International Circuit",
+    "country":"Bahrain",
+    "avgLaps":57.0
+  },
+  {
+    "circuitId":78,
+    "name_circuit":"Losail International Circuit",
+    "country":"Qatar",
+    "avgLaps":57.0
+  },
+  {
+    "circuitId":2,
+    "name_circuit":"Sepang International Circuit",
+    "country":"Malaysia",
+    "avgLaps":56.0
+  },
+  {
+    "circuitId":24,
+    "name_circuit":"Yas Marina Circuit",
+    "country":"UAE",
+    "avgLaps":56.0
+  },
+  {
+    "circuitId":17,
+    "name_circuit":"Shanghai International Circuit",
+    "country":"China",
+    "avgLaps":56.0
+  },
+  {
+    "circuitId":69,
+    "name_circuit":"Circuit of the Americas",
+    "country":"USA",
+    "avgLaps":56.0
+  },
+  {
+    "circuitId":55,
+    "name_circuit":"Reims-Gueux",
+    "country":"France",
+    "avgLaps":56.0
+  },
+  {
+    "circuitId":35,
+    "name_circuit":"Korean International Circuit",
+    "country":"Korea",
+    "avgLaps":55.0
+  },
+  {
+    "circuitId":34,
+    "name_circuit":"Circuit Paul Ricard",
+    "country":"France",
+    "avgLaps":54.0
+  },
+  {
+    "circuitId":71,
+    "name_circuit":"Sochi Autodrom",
+    "country":"Russia",
+    "avgLaps":53.0
+  },
+  {
+    "circuitId":14,
+    "name_circuit":"Autodromo Nazionale di Monza",
+    "country":"Italy",
+    "avgLaps":53.0
+  },
+  {
+    "circuitId":64,
+    "name_circuit":"Ain Diab",
+    "country":"Morocco",
+    "avgLaps":53.0
+  },
+  {
+    "circuitId":22,
+    "name_circuit":"Suzuka Circuit",
+    "country":"Japan",
+    "avgLaps":52.0
+  },
+  {
+    "circuitId":59,
+    "name_circuit":"Circuito da Boavista",
+    "country":"Portugal",
+    "avgLaps":52.0
+  },
+  {
+    "circuitId":73,
+    "name_circuit":"Baku City Circuit",
+    "country":"Azerbaijan",
+    "avgLaps":51.0
+  },
+  {
+    "circuitId":77,
+    "name_circuit":"Jeddah Corniche Circuit",
+    "country":"Saudi Arabia",
+    "avgLaps":50.0
+  },
+  {
+    "circuitId":80,
+    "name_circuit":"Las Vegas Strip Street Circuit",
+    "country":"United States",
+    "avgLaps":50.0
+  },
+  {
+    "circuitId":10,
+    "name_circuit":"Hockenheimring",
+    "country":"Germany",
+    "avgLaps":45.0
+  },
+  {
+    "circuitId":13,
+    "name_circuit":"Circuit de Spa-Francorchamps",
+    "country":"Belgium",
+    "avgLaps":42.0
+  },
+  {
+    "circuitId":63,
+    "name_circuit":"Sebring International Raceway",
+    "country":"USA",
+    "avgLaps":42.0
+  },
+  {
+    "circuitId":51,
+    "name_circuit":"Charade Circuit",
+    "country":"France",
+    "avgLaps":38.0
+  },
+  {
+    "circuitId":65,
+    "name_circuit":"Pescara Circuit",
+    "country":"Italy",
+    "avgLaps":18.0
+  }
+]
