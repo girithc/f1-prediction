@@ -1,18 +1,10 @@
-# --- Core runtime ---
 fastapi
 uvicorn[standard]
-
-# --- Data & ML stack ---
 pandas
-numpy
-scikit-learn
+numpy<2.0
+scikit-learn==1.6.1
 xgboost
 joblib
 shap
-
-# --- Utilities ---
 python-dotenv
-pathlib
-
-# --- Optional: for faster JSON serialization ---
 orjson
