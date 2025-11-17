@@ -1,0 +1,18 @@
+{
+  "numeric": [
+    "grid",
+    "pit_count",
+    "pit_total_duration",
+    "pit_avg_duration",
+    "first_pit_lap",
+    "last_pit_lap",
+    "circuit_overtake_difficulty",
+    "round",
+    "circuitId",
+    "carPerformanceIndex",
+    "avgTireScore"
+  ],
+  "categorical": [
+    "country"
+  ]
+}
