@@ -10,6 +10,8 @@
     "round",
     "circuitId",
     "carPerformanceIndex",
+    "tireStints",
+    "avgPitMs",
     "first_stop_delta",
     "tire_aggr_index"
   ],
